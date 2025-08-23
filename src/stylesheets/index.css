@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Josefin Sans", sans-serif;
+  --font-alata: "Alata";
+
+  --breakpoint-sm: 30rem; /* 480px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 61rem; /* 976px */
+  --breakpoint-xl: 90rem; /* 1440px */
+
+  --tracking-widest: 0.3em;
+}
+
+@layer components {
+  .btn {
+    @apply rounded-lg font-alata px-10 py-2 border-2 border-gray-900 text-sm font-bold tracking-widest uppercase hover:bg-gray-900 hover:text-white duration-200;
+  }
+}
+
+@layer base {
+  h5 {
+    @apply absolute px-6 duration-200 w-52 bottom-4 md:bottom-8 md:px-10 group-hover:text-black group-hover:scale-110;
+  }
+}
+
+.items-container {
+  @apply flex flex-col justify-between space-y-6 text-2xl uppercase w-full text-white md:flex-row md:space-y-0 md:space-x-8;
+}
+
+.item {
+  @apply relative overflow-hidden md:w-1/4;
+}
+
+.gradient {
+  @apply absolute top-0 left-0 bottom-0 right-0 bg-gradient-to-b from-transparent to-gray-900 group-hover:from-gray-50 group-hover:to-white group-hover:opacity-40;
+}
+
+#hero {
+  background-image: url("../assets/images/desktop/image-hero.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 576px) {
+  #hero {
+    background-image: url("../assets/images/mobile/image-hero.jpg");
+    background-position: center;
+  }
+}
+
+/* Base hamburger styles */
+.hamburger {
+  @apply cursor-pointer w-6 h-6 transition-all duration-[0.25s] relative;
+}
+
+/* Hamburger lines base styles */
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  @apply absolute w-6 h-0.5 top-0 left-0 bg-white rotate-0 transition-all duration-500;
+}
+
+/* Middle line positioning */
+.hamburger-middle {
+  @apply translate-y-[7px];
+}
+
+/* Bottom line positioning */
+.hamburger-bottom {
+  @apply translate-y-[14px];
+}
+
+/* Open state - container rotation */
+.open {
+  @apply rotate-90;
+}
+
+/* Open state - top line becomes X */
+.open .hamburger-top {
+  @apply rotate-45 translate-y-[1px] translate-x-[1px];
+}
+
+/* Open state - middle line disappears */
+.open .hamburger-middle {
+  @apply hidden;
+}
+
+/* Open state - bottom line becomes X */
+.open .hamburger-bottom {
+  @apply -rotate-45 translate-y-[1px] -translate-x-[1px];
+}
